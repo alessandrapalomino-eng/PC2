@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica - Registro Clínico de Pacientes</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de Pacientes - Evaluación Inicial</h1>
+        <p class="subtitle">Complete los datos requeridos para la apertura de la historia clínica médica.</p>
+        
+        <form id="patientForm">
+            <div class="form-section">
+                <h3>Información Personal</h3>
+                <div class="grid-2">
+                    <div class="form-group"><label>Nombres *</label><input type="text" id="nombres" placeholder="Ej. Alessandra"></div>
+                    <div class="form-group"><label>Apellidos *</label><input type="text" id="apellidos" placeholder="Ej. Palomino"></div>
+                </div>
+                <div class="grid-3">
+                    <div class="form-group"><label>DNI *</label><input type="text" id="dni" placeholder="8 dígitos" maxlength="8"></div>
+                    <div class="form-group"><label>Fecha de Nacimiento *</label><input type="date" id="fecha_nacimiento"></div>
+                    <div class="form-group"><label>Edad *</label><input type="number" id="edad" min="0" placeholder="Años"></div>
+                </div>
+                <div class="grid-3">
+                    <div class="form-group"><label>Sexo *</label>
+                        <select id="sexo">
+                            <option value="">Seleccione...</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Celular *</label><input type="text" id="celular" placeholder="Mínimo 9 dígitos" maxlength="12"></div>
+                    <div class="form-group"><label>Correo Electrónico *</label><input type="email" id="correo" placeholder="ejemplo@correo.com"></div>
+                </div>
+                <div class="grid-3">
+                    <div class="form-group" style="grid-column: span 2;"><label>Dirección *</label><input type="text" id="direccion" placeholder="Av. Principal 123"></div>
+                    <div class="form-group"><label>Distrito *</label><input type="text" id="distrito" placeholder="Ej. Miraflores"></div>
+                </div>
+                <div class="form-group"><label>Estado Civil *</label>
+                    <select id="estado_civil">
+                        <option value="">Seleccione...</option>
+                        <option value="Soltero(a)">Soltero(a)</option>
+                        <option value="Casado(a)">Casado(a)</option>
+                        <option value="Divorciado(a)">Divorciado(a)</option>
+                        <option value="Viudo(a)">Viudo(a)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Datos Académicos</h3>
+                <div class="form-group"><label>Grado Académico *</label><select id="grado_academico_id"><option value="">Cargando opciones...</option></select></div>
+            </div>
+
+            <div class="form-section">
+                <h3>Datos Médicos</h3>
+                <div class="form-group"><label>Enfermedad Preexistente *</label><select id="enfermedad_preexistente_id"><option value="">Cargando opciones...</option></select></div>
+            </div>
+
+            <div class="form-section">
+                <h3>Otros Datos y Seguros</h3>
+                <div class="grid-2">
+                    <div class="form-group-checkbox"><input type="checkbox" id="cuenta_seguro"><label for="cuenta_seguro">¿Cuenta con seguro vigente?</label></div>
+                    <div class="form-group"><label>Tipo de Seguro</label><input type="text" id="tipo_seguro" placeholder="Ej. EsSalud, SIS" disabled></div>
+                </div>
+                <div class="form-group" style="margin-top: 15px;"><label>Observaciones adicionales</label><textarea id="observaciones" rows="3" placeholder="Comentarios relevantes..."></textarea></div>
+            </div>
+
+            <div id="statusMessage" class="message hidden"></div>
+            <button type="submit" id="btnSubmit">Registrar Paciente</button>
+        </form>
+    </div>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
